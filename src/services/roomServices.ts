@@ -1,5 +1,5 @@
 import { CreateRoomSchemaType, UpdateRoomSchemaType } from "../schema/romm.schema.js";
-import prisma from "../database/prisma.js";
+import prisma from "../utils/prisma.js";
 import slugify from 'slugify';
 import bcrypt from "bcrypt";
 import UserService from "./usersServices.js";
@@ -25,7 +25,8 @@ class RoomServices {
         return "Sala criada";
     }
 
-    async updateRoom(userPasswoword: string, roomId: string, data: UpdateRoomSchemaType) {
+    async updateRoom(userPasswoword: string, roomId: string, data: Partial<UpdateRoomSchemaType>) {
+        console.log("Service", userPasswoword, roomId, data);
         const room = await prisma.rooms.findUnique({ where: { id: roomId } });
         const ownerUserPassword = (await UserService.findUserById(room?.ownerId as string))?.passwordHash; //Busca a senha do usuário proprietário da sala para comparação
 
