@@ -1,0 +1,1 @@
+{"version":3,"file":"permissionMiddleware.d.ts","sourceRoot":"","sources":["../../../src/middlewares/permissionMiddleware.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAIzD,wBAAsB,wBAAwB,CAAC,GAAG,EAAE,OAAO,EAAE,GAAG,EAAE,QAAQ,EAAE,IAAI,EAAE,YAAY,iBAY7F"}
