@@ -25,9 +25,11 @@ export default function LoginPage() {
         password,
       });
 
-      if (response.data.token) return router.push("/hub");
+      localStorage.setItem("token", response.data.token.token);
+      localStorage.setItem("userID", response.data.user.id);
+      localStorage.setItem("userName", response.data.user.name);
 
-      localStorage.setItem("token", response.data.token);
+      if (response.data.token) return router.push("/hub");
     } catch (error) {
       console.error(error);
     }

@@ -6,7 +6,7 @@ class OptionController {
 
     // Pega todas as opções de uma sala
     async getAll(req: Request, res: Response) {
-        const roomId = req.params.id as string;
+        const roomId = req.params.roomId as string;
         const options = await OptionService.findAllOptions(roomId);
 
         res.status(200).json(options);

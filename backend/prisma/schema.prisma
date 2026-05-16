@@ -77,7 +77,7 @@ model Vote {
 
   createdAt DateTime @default(now())
 
-  @@unique([userId, roomId])
+  // @@unique([userId, roomId])
   @@index([roomId])
   @@index([optionId])
 }

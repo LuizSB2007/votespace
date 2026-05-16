@@ -9,5 +9,6 @@ export function generateToken(email: string, userId: string, role: string) {
 
 //Verifica se o token do usuário é válido
 export function verifyTokenValid(token: string) {
-    return jwt.verify(token, process.env.AUTH_KEY!)
+    const response = jwt.verify(token, process.env.AUTH_KEY!)
+    return response ? "isValid" : "invalid"
 }

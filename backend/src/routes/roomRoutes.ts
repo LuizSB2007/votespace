@@ -6,8 +6,8 @@ import { permissionEditMiddleware } from '../middlewares/permissionMiddleware.js
 
 const router = express.Router();
 
-router.use('/:id/option', optionRoutes);
-router.use('/:id/vote', voteRoutes);
+router.use('/option', optionRoutes);
+router.use('/vote', voteRoutes);
 
 router.get('/', roomController.getAll);
 router.get('/:id', roomController.getById);

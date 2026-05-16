@@ -1,7 +1,7 @@
 import prisma from "../utils/prisma.js";
 import { comparePassword } from "../utils/hash.js";
 import { LoginSchemaType } from "../schema/auth.schema.js";
-import { generateToken } from "../utils/jwt.js";
+import { generateToken, verifyTokenValid } from "../utils/jwt.js";
 
 class AuthService {
     //Autentica um usuário, verificando o email e a senha
@@ -10,7 +10,14 @@ class AuthService {
 
         if (!user || !await comparePassword(data.password, user.passwordHash || '')) throw new Error("Email ou senha incorretos")
 
-        return generateToken(user.email, user.id, user.role); //Cria um token qu permitirá o acesso do usuário nas rotas privadas
+        return {
+            token: generateToken(user.email, user.id, user.role), user: { id: user.id, name: user.name }  //Cria um token qu permitirá o acesso do usuário nas rotas privadas
+        }
+    }
+
+    async userAuthenticated(data: string) {
+        const isValid = verifyTokenValid(data)
+        return isValid
     }
 }
 
