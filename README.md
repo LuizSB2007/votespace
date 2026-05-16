@@ -6,6 +6,8 @@ O sistema funciona como um hub de salas de votação, permitindo que usuários c
 
 O projeto tem como objetivo consolidar conhecimentos em desenvolvimento web moderno, abrangendo frontend, backend, integração entre APIs, persistência de dados e boas práticas de arquitetura.
 
+Link do Deploy: https://votespace.vercel.app
+
 ---
 
 ## Tecnologias utilizadas
