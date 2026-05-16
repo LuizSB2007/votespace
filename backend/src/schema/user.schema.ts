@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { roomSchema } from "./romm.schema";
+import { roomSchema } from "./romm.schema.js";
 
 export const userSchema = z.object({
     id: z.string(),
