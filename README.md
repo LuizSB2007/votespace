@@ -1,31 +1,151 @@
-# VoteHub
+# VoteSpace
 
-O VoteHub é um projeto desenvolvido como entregável para o processo Trainee da Atria Jr..
-A proposta do sistema é funcionar como um hub de salas de votação, permitindo que usuários criem salas, entrem nelas e participem de votações.
+O **VoteSpace** é uma aplicação full stack desenvolvida como entregável para o processo trainee da Atria Jr.
 
-O principal objetivo do projeto é colocar em prática conceitos de desenvolvimento Full Stack, trabalhando tanto o frontend quanto o backend da aplicação. Além da parte visual, o sistema também busca demonstrar conhecimentos relacionados a CRUD, integração com banco de dados, consumo de API e organização de uma aplicação web moderna.
+O sistema funciona como um hub de salas de votação, permitindo que usuários criem salas, entrem nelas e participem de votações.
 
-No frontend, a aplicação será desenvolvida utilizando Next.js com TypeScript. Já no backend, a ideia é utilizar Node.js com TypeScript e o Prisma ORM para comunicação com o banco de dados, que ainda está em definição.
+O projeto tem como objetivo consolidar conhecimentos em desenvolvimento web moderno, abrangendo frontend, backend, integração entre APIs, persistência de dados e boas práticas de arquitetura.
 
-O projeto também servirá como base para explorar conceitos importantes como componentização, rotas, persistência de dados e integração entre cliente e servidor.
+---
 
-## Tecnologias
+## Tecnologias utilizadas
 
-* Next.js
+### Frontend
+
+* Next.js (App Router)
 * React
 * TypeScript
+* Axios
+* Tailwind CSS
+
+### Backend
+
 * Node.js
+* TypeScript
+* Express.js
 * Prisma ORM
-* Banco de dados SQL (a definir)
+* JWT (JSON Web Token)
+* bcrypt
+* CORS
 
-## Funcionalidades previstas
+### Banco de dados
 
+* SQL (configurável via Prisma)
+
+---
+
+## Arquitetura do projeto
+
+O projeto está estruturado em duas camadas principais:
+
+```
+votespace/
+├── backend/   (API REST)
+├── frontend/  (Interface web)
+```
+
+O frontend consome a API do backend por meio de requisições HTTP.
+
+---
+
+## Autenticação
+
+A autenticação é baseada em JWT:
+
+* Usuário realiza login e recebe um token
+* O token é enviado nas requisições protegidas
+* Um middleware no backend valida o token e controla o acesso às rotas
+
+---
+
+## Rotas da API (Backend)
+
+### Autenticação
+
+| Método | Rota           | Descrição                       |
+| ------ | -------------- | ------------------------------- |
+| POST   | /auth/register | Cadastro de usuário             |
+| POST   | /auth/login    | Autenticação e geração de token |
+
+### Usuários
+
+| Método | Rota       | Descrição               |
+| ------ | ---------- | ----------------------- |
+| GET    | /users     | Lista todos os usuários |
+| GET    | /users/:id | Busca usuário por ID    |
+
+### Salas (Rooms)
+
+| Método | Rota         | Descrição                  |
+| ------ | ------------ | -------------------------- |
+| POST   | /rooms       | Criação de sala de votação |
+| GET    | /rooms       | Listagem de salas          |
+| GET    | /rooms/:slug | Detalhes de uma sala       |
+| DELETE | /rooms/:id   | Remoção de sala            |
+
+### Votos
+
+| Método | Rota           | Descrição                  |
+| ------ | -------------- | -------------------------- |
+| POST   | /votes         | Registro de voto           |
+| GET    | /votes/:roomId | Listagem de votos por sala |
+
+---
+
+## Funcionalidades
+
+* Cadastro e autenticação de usuários
 * Criação de salas de votação
-* Entrada em salas
-* Sistema de votos
-* Integração com banco de dados
-* Operações CRUD
+* Entrada em salas via slug
+* Registro de votos
+* Contagem de votos por sala
+* Proteção de rotas com JWT
+* Persistência de dados com Prisma ORM
+
+---
+
+## Como executar o projeto
+
+### Backend
+
+```bash
+cd backend
+npm install
+npx prisma migrate dev
+npm run dev
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+
+
+## Melhorias futuras
+
+* Implementação de WebSockets para atualização em tempo real das votações
+* Sistema de permissões (admin de sala)
+* Expiração automática de salas
+
+### Melhorias pendentes no frontend
+
+* Edição de salas
+* Edição de usuário
+* Exclusão de usuário
+* Exclusão de sala
+* Feedback visual para login com erro
+* Feedback visual para cadastro com erro
+* Restrição de apenas um voto por usuário (atualmente desabilitada para facilitar a popularização dos dados)
+
+---
 
 ## Autor
 
-Desenvolvido por Luiz Bellini para o processo Trainee da Atria Jr..
+Desenvolvido por Luiz Bellini
+Projeto desenvolvido para processo trainee da Atria Jr.
