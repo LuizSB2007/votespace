@@ -10,8 +10,16 @@ declare class OptionServices {
         roomId: string;
         text: string;
     } | null>;
-    createOption(data: CreateOptionSchemaType): Promise<string>;
-    updateOption(id: string, text: string): Promise<string>;
+    createOption(data: CreateOptionSchemaType): Promise<{
+        id: string;
+        roomId: string;
+        text: string;
+    }>;
+    updateOption(id: string, text: string): Promise<{
+        id: string;
+        roomId: string;
+        text: string;
+    }>;
     deleteOption(id: string): Promise<string>;
 }
 declare const _default: OptionServices;

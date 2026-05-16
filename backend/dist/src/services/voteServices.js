@@ -7,14 +7,13 @@ class VoteServices {
     }
     // Pega todos os votos de uma opção
     async findVotesByOptionId(optionId) {
-        console.log(optionId);
         const votes = await prisma.vote.findMany({ where: { optionId } });
         return votes;
     }
     // Cria um novo voto
     async createVote(data) {
-        await prisma.vote.create({ data: { ...data } });
-        return "Voto criado com sucesso";
+        const vote = await prisma.vote.create({ data: { ...data } });
+        return vote;
     }
     // Deleta um voto
     async deleteVote(id) {

@@ -12,7 +12,7 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
 
     if (!token) return res.status(401).json({ message: "O token é inválido" });
 
-    const decoded = verifyTokenValid(token) as JwtPayload; //Verifica a validade do token e coleta os dados encriptografados no mesmo
+    const decoded = verifyTokenValid(token); //Verifica a validade do token e coleta os dados encriptografados no mesmo
 
     (req as any).user = decoded;
 

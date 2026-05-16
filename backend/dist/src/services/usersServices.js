@@ -30,14 +30,14 @@ class UsersService {
                 role: data.role,
             },
         });
-        const token = await authServices.authenticateUser({ email: data.email, password: data.password });
-        return { "Ususario criado com sucesso, token de autenticação: ": token };
+        const dataUser = await authServices.authenticateUser({ email: data.email, password: data.password });
+        return dataUser;
     }
     //Atualiza um usuário existente, verificando a senha atual antes de permitir a atualização
     async updateUser(id, data) {
         const user = await prisma.user.findUnique({ where: { id: id } });
         if (await comparePassword(data.password, user?.passwordHash || '')) { //Verifica se o usuário digitou a senha correta antes de atualizá-lo
-            await prisma.user.update({
+            const updatedUser = await prisma.user.update({
                 where: { id: id },
                 data: {
                     name: data.name || user?.name,
@@ -46,7 +46,7 @@ class UsersService {
                     updatedAt: new Date()
                 },
             });
-            return "Usuario atualizado";
+            return updatedUser;
         }
         return "Senha incorreta";
     }

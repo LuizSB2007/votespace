@@ -14,14 +14,13 @@ class RoomServices {
     //Encontra uma sala pelo seu slug (nome sem acento e separado por '-')
     async findRoomByslug(slug) {
         const room = await prisma.rooms.findMany({ where: { slug } });
-        console.log(room);
         return room;
     }
     //Cria uma sala
     async createRoom(ownerId, data) {
         const slug = await generateUniqueSlug(data.name); //Tranforma o nome em slug
-        await prisma.rooms.create({ data: { ...data, slug, ownerId } });
-        return "Sala criada";
+        const room = await prisma.rooms.create({ data: { ...data, slug, ownerId } });
+        return room;
     }
     //Atualiza uma sala, só será possível se o usuário for o criador dela
     async updateRoom(roomId, data) {
@@ -29,11 +28,11 @@ class RoomServices {
         if (!room)
             throw new Error("Sala não encontrada");
         const slug = data.name ? await generateUniqueSlug(data.name) : room.slug; //verifica se o nome foi alterado, caso sim gera um novo slug
-        await prisma.rooms.update({
+        const updatedRoom = await prisma.rooms.update({
             where: { id: roomId },
             data: { ...data, slug, updatedAt: new Date() }
         });
-        return "Sala atualizada";
+        return updatedRoom;
     }
     //Exclui uma sala e todos os relacionados a ela (opções e votos)
     async deleteRoom(roomId) {

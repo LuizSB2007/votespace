@@ -14,7 +14,13 @@ declare class VoteServices {
         roomId: string;
         optionId: string;
     }[]>;
-    createVote(data: CreateVoteSchemaType): Promise<string>;
+    createVote(data: CreateVoteSchemaType): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        roomId: string;
+        optionId: string;
+    }>;
     deleteVote(id: string): Promise<string>;
 }
 declare const _default: VoteServices;

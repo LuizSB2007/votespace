@@ -1,7 +1,7 @@
 import { Router } from "express";
 import OptionController from "../controller/optionController.js";
 const router = Router();
-router.get("/", OptionController.getAll);
+router.get("/:roomId", OptionController.getAll);
 router.get("/:id", OptionController.getById);
 router.post("/", OptionController.create);
 router.patch("/:id", OptionController.update);

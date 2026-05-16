@@ -30,8 +30,26 @@ declare class RoomServices {
         updatedAt: Date;
         slug: string;
     }[]>;
-    createRoom(ownerId: string, data: CreateRoomSchemaType): Promise<string>;
-    updateRoom(roomId: string, data: Partial<UpdateRoomSchemaType>): Promise<string>;
+    createRoom(ownerId: string, data: CreateRoomSchemaType): Promise<{
+        id: string;
+        name: string;
+        description: string | null;
+        isPublic: boolean;
+        ownerId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        slug: string;
+    }>;
+    updateRoom(roomId: string, data: Partial<UpdateRoomSchemaType>): Promise<{
+        id: string;
+        name: string;
+        description: string | null;
+        isPublic: boolean;
+        ownerId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        slug: string;
+    }>;
     deleteRoom(roomId: string): Promise<string>;
 }
 declare const _default: RoomServices;

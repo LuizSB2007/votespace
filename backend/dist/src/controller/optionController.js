@@ -3,7 +3,7 @@ import { createOptionSchema } from "../schema/option.schema.js";
 class OptionController {
     // Pega todas as opções de uma sala
     async getAll(req, res) {
-        const roomId = req.params.id;
+        const roomId = req.params.roomId;
         const options = await OptionService.findAllOptions(roomId);
         res.status(200).json(options);
     }

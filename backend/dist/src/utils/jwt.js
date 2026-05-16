@@ -7,6 +7,7 @@ export function generateToken(email, userId, role) {
 }
 //Verifica se o token do usuário é válido
 export function verifyTokenValid(token) {
-    return jwt.verify(token, process.env.AUTH_KEY);
+    const response = jwt.verify(token, process.env.AUTH_KEY);
+    return response ? "isValid" : "invalid";
 }
 //# sourceMappingURL=jwt.js.map

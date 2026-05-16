@@ -31,11 +31,24 @@ declare class UsersService {
         lastLoginAt: Date | null;
     } | null>;
     createUser(data: CreateUserSchemaType): Promise<{
-        "Ususario criado com sucesso, token de autentica\u00E7\u00E3o: ": {
+        token: {
             token: string;
         };
+        user: {
+            id: string;
+            name: string;
+        };
     }>;
-    updateUser(id: string, data: UpdateUserSchemaType): Promise<"Usuario atualizado" | "Senha incorreta">;
+    updateUser(id: string, data: UpdateUserSchemaType): Promise<{
+        id: string;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        email: string;
+        role: import(".prisma/client/client").$Enums.UserRole;
+        passwordHash: string;
+        lastLoginAt: Date | null;
+    } | "Senha incorreta">;
     deleteUser(id: string, password: string): Promise<"Senha incorreta" | "Usuario excluido">;
 }
 declare const _default: UsersService;

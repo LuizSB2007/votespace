@@ -12,13 +12,13 @@ class OptionServices {
     }
     // Cria uma nova opção para uma sala
     async createOption(data) {
-        await prisma.option.create({ data: { ...data } });
-        return "Opção criada com sucesso";
+        const option = await prisma.option.create({ data: { ...data } });
+        return option;
     }
     // Atualiza o texto de uma opção
     async updateOption(id, text) {
-        await prisma.option.update({ where: { id }, data: { text } });
-        return "Opção atualizada com sucesso";
+        const option = await prisma.option.update({ where: { id }, data: { text } });
+        return option;
     }
     // Deleta uma opção de uma sala
     async deleteOption(id) {
