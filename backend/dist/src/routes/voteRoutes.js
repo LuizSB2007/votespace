@@ -1,5 +1,5 @@
 import { Router } from "express";
-import voteController from "../controller/voteController";
+import voteController from "../controller/voteController.js";
 const router = Router();
 router.get("/room/:id", voteController.getVotesByRoomId);
 router.get("/option/:id", voteController.getVotesByOptionId);

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express"
-import roomServices from "../services/roomServices"
+import roomServices from "../services/roomServices.js"
 
 //Função responsável por verificar se o usuário tem permisão para alterar os dados de uma sala
 export async function permissionEditMiddleware(req: Request, res: Response, next: NextFunction) {

@@ -1,5 +1,5 @@
 import slugify from 'slugify';
-import prisma from './prisma';
+import prisma from './prisma.js';
 // Função responsável por transformar um nome em slug e garantir que seja unico
 export async function generateUniqueSlug(name) {
     const slug = slugify(name, { lower: true, strict: true });

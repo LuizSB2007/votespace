@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import authServices from "../services/authServices";
-import { LoginSchema } from "../schema/auth.schema";
+import authServices from "../services/authServices.js";
+import { LoginSchema } from "../schema/auth.schema.js";
 
 class AuthController {
     //loga um usuário

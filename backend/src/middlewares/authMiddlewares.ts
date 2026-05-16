@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { verifyTokenValid } from "../utils/jwt";
-import { JwtPayload } from "jsonwebtoken";
+import { verifyTokenValid } from "../utils/jwt.js";
 
 //Função responsável por garantir que apenas usuários logados possuam acesso as rotas privadas
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {

@@ -1,4 +1,4 @@
-import { verifyTokenValid } from "../utils/jwt";
+import { verifyTokenValid } from "../utils/jwt.js";
 //Função responsável por garantir que apenas usuários logados possuam acesso as rotas privadas
 export function authMiddleware(req, res, next) {
     const authHeader = req.headers.authorization;
